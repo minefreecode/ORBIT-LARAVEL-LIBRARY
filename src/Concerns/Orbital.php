@@ -230,9 +230,12 @@ trait Orbital
 
         $fs = new Filesystem();
 
+        //Создает директорию если она не существует
         $fs->ensureDirectoryExists(
             static::getOrbitalPath()
         );
+
+        //Создает директорию если она не существует
 
         $fs->ensureDirectoryExists(
             \config('orbit.paths.cache')

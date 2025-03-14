@@ -17,6 +17,7 @@ class ClearCache
             return;
         }
 
+        //Удаляет путь
         unlink($path);
     }
 }
