@@ -1,0 +1,62 @@
+{
+    "name": "ryangjchandler/orbit",
+    "description": "A flat-file database driver for Eloquent.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan Chandler",
+            "email": "support@ryangjchandler.co.uk",
+            "homepage": "https://ryangjchandler.co.uk",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "ext-json": "*",
+        "illuminate/console": "^11.0 | ^12.0",
+        "illuminate/database": "^11.0 | ^12.0",
+        "illuminate/events": "^11.0 | ^12.0",
+        "illuminate/support": "^11.0 | ^12.0",
+        "spatie/yaml-front-matter": "^2.0",
+        "symfony/yaml": "^6.0 | ^7.0"
+    },
+    "require-dev": {
+        "laravel/scout": "^9.4 | ^10.0",
+        "nunomaduro/larastan": "^2.0",
+        "orchestra/testbench": "^9.0 | ^10.0",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0 | ^2.0",
+        "phpstan/phpstan-phpunit": "^1.0 | ^2.0",
+        "phpunit/phpunit": "^10.0 | ^11.5.3"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Orbit\\OrbitServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Orbit\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Orbit\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "lint": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/phpunit --colors=always"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpstan/extension-installer": true,
+            "pestphp/pest-plugin": true
+        }
+    }
+}
