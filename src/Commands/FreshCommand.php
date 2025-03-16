@@ -22,6 +22,7 @@ class FreshCommand extends Command
             return 0;
         }
 
+        //Удалить все данные
         (new Filesystem())->deleteDirectory(
             Orbit::getContentPath()
         );

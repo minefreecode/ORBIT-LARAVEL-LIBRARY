@@ -8,6 +8,9 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 use SplFileInfo;
 use Symfony\Component\Yaml\Yaml;
 
+/**
+ * Файловый драйвер
+ */
 class Markdown extends FileDriver
 {
     protected static $contentColumn = 'content';

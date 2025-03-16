@@ -40,7 +40,9 @@ class CacheCommand extends Command
     {
         $laravel = $this->getLaravel();
 
-        return collect(File::allFiles($laravel->path()))
+        //Изем коллекцию моделей для работы с ними
+        return collect(File::allFiles($laravel->path()))//Получить все файлы
+            //Цикл по всем файлам
             ->map(function ($item) use ($laravel) {
                 // Convert file path to namespace
                 $path = $item->getRelativePathName();
@@ -53,13 +55,15 @@ class CacheCommand extends Command
 
                 return $class;
             })
+            //Фильтровать классы
             ->filter(function ($class) {
                 if (! class_exists($class)) {
                     return false;
                 }
-
+                //Объект рефлексий
                 $reflection = new ReflectionClass($class);
 
+                //Если класс относится к типу моделей
                 return $reflection->isSubclassOf(Model::class) &&
                     ! $reflection->isAbstract() &&
                     isset(class_uses_recursive($class)[Orbital::class]);

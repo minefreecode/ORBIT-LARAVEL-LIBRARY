@@ -25,7 +25,7 @@ class ClearCommand extends Command
 
             return 0;
         }
-
+        //Чистить кэш
         (new ClearCache())();
 
         $this->info('Succesfully cleared the Orbit cache.');

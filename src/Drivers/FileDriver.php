@@ -12,19 +12,22 @@ use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use SplFileInfo;
 
+/**
+ * Базовый класс для всех драйверов
+ */
 abstract class FileDriver implements DriverContract
 {
     public function shouldRestoreCache(string $directory): bool
     {
         $highest = 0;
-
+        //Цикл по файлам в директории кеша
         foreach (new FilesystemIterator($directory) as $file) {
-            if ($file->getMTime() > $highest) {
-                $highest = $file->getMTime();
+            if ($file->getMTime() > $highest) { //Находим файл который модифицирован последним. Для этого сравниваемся с временем последней модификации
+                $highest = $file->getMTime(); //Присваиваем время последней модификации
             }
         }
 
-        return $highest > filemtime(Orbit::getDatabasePath());
+        return $highest > filemtime(Orbit::getDatabasePath()); //Если в кэше файлы более поздней модификации чем файлов в БД
     }
 
     public function save(Model $model, string $directory): bool
